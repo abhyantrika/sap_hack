@@ -66,33 +66,15 @@ def getPDFContent(file):
 	return re.sub(r'[%s]' % ''.join(map(unichr, range(32) + range(127, 256))), '', pdf2txt(file)), pdf2txt(file) #Needed as it gives structured data
 
 
-#def get_subch_wise(filename):
-""" TILAK WILL DO THIS """	
-
-
-def get_media_content(file):
-	a = open('output.txt').readlines()
-
-
-	pass
-
-def get_sections(file):
-	pass
-
 
 def get_rank_list(ff):
 	f = open('Chapter1.txt')
 	ff = f.read()
 	gg = ff[::]
 
-	rank_list_old = []
-	rank_list_old = score_keyphrases_by_textrank(gg)   #See if possible to use only 
-
-	rank_list_new = []
-	rank_list_new = score_keyphrases_by_textrank(str(extract_candidate_words(ff)))
-	print len(rank_list_old),len(rank_list_new)
-
-	final_rank = rank_list_new[:10] + rank_list_old[:10]
+	rank_list = []
+	rank_list = score_keyphrases_by_textrank(str(extract_candidate_words(ff)))
+	final_rank = rank_list_new[:10] 
 	print final_rank
 	f.close()
 
@@ -119,6 +101,5 @@ h.close()
 
 print '\n scores => '
 
-#for section in get_sections(FileName):
-	#get_rank_list(section)
+
 
