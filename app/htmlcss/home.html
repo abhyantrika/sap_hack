@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+  <title>Texnopsys</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-signin-client_id" content="893047591877-cmuv64b7ok3tjg9tj2dlhbo3fsulfv4t.apps.googleusercontent.com">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <center>
+        <h1>TEXNOPSIS<small> for better learning</small></h1></center>
+    </div>
+  </div>
+  <!-- Log in -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <center>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+          document.getElementById("SignOutButton").style.visibility = "visible";
+          document.getElementById("NextButton").style.visibility = "visible";
+      }
+    </script>
+    <br>
+    <div class="row">
+      <div class="col-sm-5"></div>
+      <div class="col-sm-1">
+        <a href="#" class="btn btn-danger" id="SignOutButton" onclick="signOut();" style="visibility:hidden" >Sign out</a>
+        <script>
+          function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          document.getElementById("SignOutButton").style.visibility = "hidden";
+          document.getElementById("NextButton").style.visibility = "hidden";
+        });
+      }
+    </script>
+      </div>
+      <div class="col-sm-1">
+        <a href="main.html" class="btn btn-info" id="NextButton" style="visibility:hidden">GO</a>
+      </div>
+      <div class="col-sm-5"></div>
+    </div>
+  </center>
+</body>
