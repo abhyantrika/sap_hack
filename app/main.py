@@ -29,12 +29,6 @@ def upload_file():
 
 @app.route('/suggest')
 def suggest():
-	d = {'it':'works'}
-	return render_template('suggest.html',o = d)
-
-"""
-@app.route('/suggest')
-def suggest():
 	os.system('pdf2txt.py {file} > Chapter1_structured.txt'.format(file = 'Chapter1.pdf'))
 	f = open('output.txt')
 	a = f.readlines()
@@ -55,7 +49,7 @@ def suggest():
 		d = d + [' '.join(map(str,i))]
 
 	return render_template('suggest.html',o = d[:5])
-"""
+
 port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=int(port))
